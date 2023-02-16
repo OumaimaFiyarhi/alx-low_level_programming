@@ -10,4 +10,6 @@ puts is a function that prints texts or strings or variables
 
 printf is a function that displays a message
 
+sizeof(type)shows the size of the data type
 
+ 
