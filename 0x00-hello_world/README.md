@@ -8,4 +8,6 @@ gcc file-name.c -o file-name is a script that compiles a C file and creates an e
 
 puts is a function that prints texts or strings or variables
 
+printf is a function that displays a message
+
 
