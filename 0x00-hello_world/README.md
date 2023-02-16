@@ -6,4 +6,6 @@ gcc -S is a script that generates the assembly code of a C code and save it in a
 
 gcc file-name.c -o file-name is a script that compiles a C file and creates an executable named file-name
 
+puts is a function that prints texts or strings or variables
+
 
