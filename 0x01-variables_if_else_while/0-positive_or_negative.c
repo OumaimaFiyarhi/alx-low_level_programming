@@ -4,7 +4,7 @@
 /**
  * main - Entry point
  *
- * Description: 'the program will assign a random number to the variable n each time it is executed and tells if n is positive or 0 or negative'
+ *  Description: 'positive negative or 0 for n'
  *
  * Return: Always 0 (Success)
  */
