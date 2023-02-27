@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * rev_string - entry code
- *@a: character
+ *@s: character
  */
 void rev_string(char *s)
 {
