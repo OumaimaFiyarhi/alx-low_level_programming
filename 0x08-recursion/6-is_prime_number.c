@@ -2,9 +2,10 @@
 /**
  *prime - entry code
  *@n: integer
+ *@i: integer
  * Return: Always 0.
  */
-int prime (int n, int i)
+int prime(int n, int i)
 {
 	if ((i < n) && ((n % i) == 0))
 	{
