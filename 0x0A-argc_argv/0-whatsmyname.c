@@ -1,17 +1,4 @@
 #include "main.h"
-#include <unistd.h>
-
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
 
 /**
  * _putstrl - function
@@ -30,6 +17,7 @@ void _putstrl(char *s)
 	}
 	_putchar('\n');
 }
+
 /**
  * main - writes the character c to stdout
  * @argc: The character to print
