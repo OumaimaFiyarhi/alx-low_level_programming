@@ -13,9 +13,10 @@ int _putchar(char c)
 	return (write(1, &c, 1));
 }
 
-/*
- * _putsrtl - function
+/**
+ * _putstrl - function
  * @s: string
+ *
  * return: void
  */
 void _putstrl(char *s)
@@ -29,11 +30,12 @@ void _putstrl(char *s)
 	}
 	_putchar('\n');
 }
-/*
- * main - entry code
- * @argc: integer
- * @argv: char
- * return : integer
+/**
+ * main - writes the character c to stdout
+ * @argc: The character to print
+ * @argv: table of strings
+ *
+ * Return: On success 0.
  */
 int main(int argc, char *argv[])
 {
