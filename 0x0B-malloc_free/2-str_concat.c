@@ -40,6 +40,10 @@ char *str_concat(char *s1, char *s2)
 	}
 	a = lenstr(s1) + lenstr(s2);
 	str = malloc(sizeof(char) * a + 1);
+	if (str == NULL)
+	{
+		return (NULL);
+	}
 	i = 0;
 	j = 0;
 	while (i < lenstr(s1))
