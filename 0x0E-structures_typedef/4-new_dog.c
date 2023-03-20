@@ -1,6 +1,46 @@
 #include "dog.h"
 #include <stdlib.h>
 /**
+ * _strlen - entry code
+ *@s: string to know its length
+ * Return: number of byte in the string without \0.
+ */
+int _strlen(char *s)
+{	int i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+/**
+ * dupstr - duplicates a string
+ * @str: the string to be duplicated
+ * Return: a copy of the str
+ */
+char *dupstr(char *str)
+{
+	char *t;
+	int i, a;
+
+	a = _strlen(str) + 1;
+	t = malloc(sizeof(char) * a);
+	if (t == NULL)
+	{
+		free(t);
+		return (NULL);
+	}
+	i = 0;
+	while (str[i] != '\0')
+	{
+		t[i] = str[i];
+		i++;
+	}
+	t[i] = '\0';
+	return (t);
+}
+/**
  * new_dog - entry code
  * @name: string
  * @age: float
@@ -14,10 +54,11 @@ dog_t *new_dog(char *name, float age, char *owner)
 	ret = malloc(sizeof(dog_t));
 	if (ret == NULL)
 	{
+		free(ret);
 		return (NULL);
 	}
-	ret->name = name;
+	ret->name = dupstr(name);
 	ret->age = age;
-	ret->owner = owner;
+	ret->owner = dupstr(owner);
 	return (ret);
 }
