@@ -60,7 +60,18 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 	ret->name = dupstr(name);
+	if (ret->name == NULL)
+	{
+		free(ret);
+		return (NULL);
+	}
 	ret->age = age;
 	ret->owner = dupstr(owner);
+	if (ret->owner == NULL)
+	{
+		free(ret->name);
+		free(ret);
+		return (NULL);
+	}
 	return (ret);
 }
