@@ -28,7 +28,6 @@ char *dupstr(char *str)
 	t = malloc(sizeof(char) * a);
 	if (t == NULL)
 	{
-		free(t);
 		return (NULL);
 	}
 	i = 0;
@@ -58,7 +57,18 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 	ret->name = dupstr(name);
+	if (ret->name == NULL)
+	{
+		free(ret->name);
+		free(ret);
+		return (NULL);
+	}
 	ret->age = age;
 	ret->owner = dupstr(owner);
+	if (ret->owner == NULL)
+	{
+		free(ret->owner);
+		free(ret);
+	}
 	return (ret);
 }
