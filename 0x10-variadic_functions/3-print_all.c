@@ -74,7 +74,7 @@ void print_all(const char * const format, ...)
 		}
 		i++;
 	}
-	if (j > 0 && format != NULL)
+	if ( format != NULL)
 	{
 		printf("\n");
 	}
