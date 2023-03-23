@@ -34,14 +34,27 @@ int count_args(const char *str)
 }
 
 /**
+ * print_string - display a string
+ * @str: string
+ * Return: nothing
+ */
+void print_string(char *str)
+{
+	if (str == NULL)
+	{
+		str = "(nil)";
+	}
+	printf("%s", str);
+}
+
+/**
  * print_all -  function that prints all types, followed by a new line.
  * @format:  is a list of types of arguments passed to the function
  * Return: nothing
  */
 void print_all(const char * const format, ...)
 {
-	int i = 0, j = 0;
-	int count, v;
+	int i = 0, j = 0, v, count;
 	va_list args;
 
 	count = count_args(format);
@@ -61,7 +74,7 @@ void print_all(const char * const format, ...)
 				printf("%f", va_arg(args, double));
 				break;
 			case 's':
-				printf("%s", va_arg(args, char *));
+				print_string(va_arg(args, char *));
 				break;
 			default:
 				v = 0;
@@ -74,9 +87,6 @@ void print_all(const char * const format, ...)
 		}
 		i++;
 	}
-	if ( format != NULL)
-	{
-		printf("\n");
-	}
+	printf("\n");
 	va_end(args);
 }
