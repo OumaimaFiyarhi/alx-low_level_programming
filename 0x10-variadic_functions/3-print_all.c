@@ -11,16 +11,28 @@ int count_args(const char *str)
 	int i = 0;
 	int count = 0;
 
-	while (str[i] != '\0')
+	while (str && str[i] != '\0')
 	{
-		if (str[i] == 'c' || str[i] == 'i' || str[i] == 'f' || str[i] == 's')
+		switch (str[i])
 		{
-			count++;
+			case 'c':
+				count++;
+				break;
+			case 'i':
+				count++;
+				break;
+			case 'f':
+				count++;
+				break;
+			case 's':
+				count++;
+				break;
 		}
 		i++;
 	}
 	return (count);
 }
+
 /**
  * print_all -  function that prints all types, followed by a new line.
  * @format:  is a list of types of arguments passed to the function
@@ -28,15 +40,13 @@ int count_args(const char *str)
  */
 void print_all(const char * const format, ...)
 {
-	int i = 0;
-	int count;
+	int i = 0, j = 0;
+	int count, v;
 	va_list args;
-	int j = 0;
-	int v;
 
 	count = count_args(format);
 	va_start(args, format);
-	while (format[i] != '\0')
+	while (format && format[i] != '\0')
 	{
 		v = 1;
 		switch (format[i])
@@ -64,6 +74,9 @@ void print_all(const char * const format, ...)
 		}
 		i++;
 	}
-	printf("\n");
+	if (j > 0 && format != NULL)
+	{
+		printf("\n");
+	}
 	va_end(args);
 }
