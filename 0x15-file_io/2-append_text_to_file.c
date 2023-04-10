@@ -20,9 +20,12 @@ int append_text_to_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
-	while (text_content[len] != '\0')
+	if (text_content != NULL)
 	{
-		len++;
+		while (text_content[len] != '\0')
+		{
+			len++;
+		}
 	}
 	wr = write(fd, text_content, len);
 	if (wr == -1)
