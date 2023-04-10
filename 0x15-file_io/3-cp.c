@@ -11,19 +11,9 @@ void close_file(int fd)
 	i = close(fd);
 	if (i == -1)
 	{
-		exit_with_error(100, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
 	}
-}
-/**
- * exit_with_error - function that outputs an error
- * @code: exit value
- * @message: message to output
- * Return: nothing
- */
-void exit_with_error(int code, const char *message)
-{
-	dprintf(STDERR_FILENO, "%s\n", message);
-	exit(code);
 }
 /**
  * main - entry code
@@ -38,29 +28,34 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		exit_with_error(97, "Usage: cp file_from file_to");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
+		exit(97);
 	}
 	from_fd = open(argv[1], O_RDONLY);
 	if (from_fd == -1)
 	{
-		exit_with_error(98, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
 	}
 	to_fd = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (to_fd == -1)
 	{
-		exit_with_error(99, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
 	}
 	while ((read_bytes = read(from_fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		write_bytes = write(to_fd, buffer, read_bytes);
 		if (write_bytes == -1)
 		{
-			exit_with_error(99, "Error: Can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
 		}
 	}
 	if (read_bytes == -1)
 	{
-		exit_with_error(98, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
 	}
 	close_file(from_fd);
 	close_file(to_fd);
